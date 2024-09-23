@@ -43,20 +43,22 @@ def chck_mail(mail):
       
 def main():
       first_name = input("entr your first name: ")
-      second_name = input("enter your second name: ")
-      email = input("enter email id: ")
       if chck_name(first_name):
             print(f"entered first name {first_name} is valid")
       else:
             print(f"entrd first name is not valid,It must start with a capital letter and have at least 3 characters.")
+
+      second_name = input("enter your second name: ")
       if chck_name(second_name):
             print(f"entered second name {second_name} is valid") 
-            if chck_mail(email):
-                  print("entered email id {email} is valid")
-            else:
-                  print("invalid emial ID")
       else:
             print("enterd second name is invalid,It must start with a capital letter and have at least 3 characters.")
+            
+      email = input("enter email id: ")
+      if chck_mail(email):
+            print("entered email id {email} is valid")
+      else:
+            print("invalid emial ID")
 
 if __name__ == "__main__":
       main()
