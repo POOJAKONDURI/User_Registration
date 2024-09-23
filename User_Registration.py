@@ -68,10 +68,26 @@ def chck_paswdrule1(passwd1):
     Returns:
         True : True if passwd is greater or equall to eight characters, False otherwise.
         """
-      if len(passwd1) >= 8:
+      if len(passwd1) >= 8 :
         return True
       else :
         return False
+
+def chck_passwdrule2(passwd1):
+    """
+    Validates password with atleast one upeercase.
+
+    Parameters:
+        passwd1 (str): password.
+
+    Returns:
+        True : True if passwd has uppercase False otherwise.
+        """
+    if re.search(r'[A-Z]',passwd1):
+        return True
+    else :
+        return False
+
 
      
       
@@ -105,8 +121,12 @@ def main():
       passwd1 = input("entr password : ")
       if chck_paswdrule1(passwd1):
            print(f"pasword entered {passwd1} is valid")
+           if chck_passwdrule2(passwd1):
+                print(f"password {passwd1} is valid")
+           else:
+                print("invalid password , should ahve atleast one uppercase")
       else:
-           print("entered password is invalid,it must have 8 charcters")
+           print("entered password is invalid,too short or no uppercase")
 
 if __name__ == "__main__":
       main()
