@@ -39,24 +39,50 @@ def chck_mail(mail):
       
       pattern = r'^[a-zA-Z0-9]+(\.[a-zA-Z0-9]+)?@[a-zA-Z0-9]+\.[a-zA-Z]{2,3}(\.[a-zA-Z]{2,3})?$'
       return bool(re.match(pattern,mail))
+
+def chck_mobilenum(mobile_number):
+       """
+    Validates the format of mobile num according to specified rules.
+
+    Parameters:
+        mobile_number (int): The phone num to validate.
+
+    Returns:
+        1: if neter number is true.
+        0:otherwise
+        """
+       #r'^\+?[0-9]{2}\s[0-9]{10}$' 
+       if re.search(r'^\d{2}\s\d{10}$',mobile_number):
+        #d is decimal num
+        return 1
+       else:
+        return 0
       
       
 def main():
       first_name = input("entr your first name: ")
-      second_name = input("enter your second name: ")
-      email = input("enter email id: ")
       if chck_name(first_name):
             print(f"entered first name {first_name} is valid")
       else:
             print(f"entrd first name is not valid,It must start with a capital letter and have at least 3 characters.")
+
+      second_name = input("enter your second name: ")
       if chck_name(second_name):
             print(f"entered second name {second_name} is valid") 
-            if chck_mail(email):
-                  print("entered email id {email} is valid")
-            else:
-                  print("invalid emial ID")
       else:
             print("enterd second name is invalid,It must start with a capital letter and have at least 3 characters.")
+
+      email = input("enter email id: ")
+      if chck_mail(email):
+        print(f"entered email id {email} is valid")
+      else:
+        print("invalid emial ID")
+        
+      mobile_number = input("enter mobile number : ")
+      if chck_mobilenum(mobile_number):
+        print(f"given number {mobile_number} is valid")
+      else:
+         print("invalid mobile number")
 
 if __name__ == "__main__":
       main()
