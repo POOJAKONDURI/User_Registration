@@ -88,6 +88,21 @@ def chck_passwdrule2(passwd1):
     else :
         return False
 
+def chck_passwdrule3(passwd1):
+    """
+    Validates password with atleast one numeric value.
+
+    Parameters:
+        passwd1 (str): password.
+
+    Returns:
+        True : True if passwd has atleast one numeric value False otherwise.
+        """
+    if re.search(r'[0-9]',passwd1):
+        return True
+    else:
+        return False
+
 
      
       
@@ -123,6 +138,10 @@ def main():
            print(f"pasword entered {passwd1} is valid")
            if chck_passwdrule2(passwd1):
                 print(f"password {passwd1} is valid")
+                if chck_passwdrule3(passwd1):
+                    print(f"password {passwd1} is valid")
+                else:
+                    print("invalid,should consist of atlesast one numeric value")
            else:
                 print("invalid password , should ahve atleast one uppercase")
       else:
