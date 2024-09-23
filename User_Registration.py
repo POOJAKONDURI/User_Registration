@@ -4,7 +4,7 @@
 @Date: 23-09-2024
 @Last Modified by: Pooja 
 @Last Modified: 23-09-2024
-@Title :User registration problems UC3-User registration problems UC3-User need to enter a valid email.
+@Title :User registration problems UC4- to enter valid mobile number according to criteria.
 
 '''
 import re
@@ -77,7 +77,7 @@ def main():
         print(f"entered email id {email} is valid")
       else:
         print("invalid emial ID")
-        
+
       mobile_number = input("enter mobile number : ")
       if chck_mobilenum(mobile_number):
         print(f"given number {mobile_number} is valid")
