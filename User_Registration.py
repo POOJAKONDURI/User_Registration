@@ -4,7 +4,7 @@
 @Date: 23-09-2024
 @Last Modified by: Pooja 
 @Last Modified: 23-09-2024
-@Title :User registration problems UC4- to enter valid mobile number according to criteria.
+@Title :User registration problems UC8-password with only one special cnaracter.
 
 '''
 import re
@@ -63,7 +63,7 @@ def chck_paswdrule1(passwd1):
     Validates password with minimum 8 Character.
 
     Parameters:
-        passwd (str): The email address to validate.
+        passwd (str): The password to set.
 
     Returns:
         True : True if passwd is greater or equall to eight characters, False otherwise.
@@ -103,6 +103,25 @@ def chck_passwdrule3(passwd1):
     else:
         return False
 
+def chck_passwdrule4(passwd1):
+    """
+    Validates password with one specisl charecter.
+
+    Parameters:
+        passwd1 (str): password.
+
+    Returns:
+        True : True if passwd have one special charecter False otherwise.
+        """
+    special_characters = re.findall(r'[!@#$%^&*(),.?":{}|<>]', passwd1)
+    if len(special_characters) != 1:
+        return False
+
+    # If all rules are passed, return True
+    return True
+
+
+
 
      
       
@@ -132,20 +151,29 @@ def main():
       else:
          print("invalid mobile number")
 
-      #rule 1
-      passwd1 = input("entr password : ")
-      if chck_paswdrule1(passwd1):
-           print(f"pasword entered {passwd1} is valid")
-           if chck_passwdrule2(passwd1):
-                print(f"password {passwd1} is valid")
-                if chck_passwdrule3(passwd1):
-                    print(f"password {passwd1} is valid")
-                else:
-                    print("invalid,should consist of atlesast one numeric value")
-           else:
-                print("invalid password , should ahve atleast one uppercase")
-      else:
-           print("entered password is invalid,too short or no uppercase")
+      passwd1 = input("enter password : ")
+      # Rule 1: Minimum 8 characters
+      if not chck_paswdrule1(passwd1):
+        print("Password must be at least 8 characters long.")
+        return
 
+    # Rule 2: At least one uppercase letter
+      if not chck_passwdrule2(passwd1):
+        print("Password must contain at least one uppercase letter.")
+        return
+
+    # Rule 3: At least one numeric digit
+      if not chck_passwdrule3(passwd1):
+        print("Password must contain at least one numeric digit.")
+        return
+
+    # Rule 4: Exactly one special character
+      if not chck_passwdrule4(passwd1):
+        print("Password must contain exactly one special character.")
+        return
+
+      print("Password successfully set!")
+
+        
 if __name__ == "__main__":
       main()
