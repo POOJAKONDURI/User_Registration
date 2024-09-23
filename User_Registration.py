@@ -57,6 +57,23 @@ def chck_mobilenum(mobile_number):
         return 1
        else:
         return 0
+       
+def chck_paswdrule1(passwd1):
+      """
+    Validates password with minimum 8 Character.
+
+    Parameters:
+        passwd (str): The email address to validate.
+
+    Returns:
+        True : True if passwd is greater or equall to eight characters, False otherwise.
+        """
+      if len(passwd1) >= 8:
+        return True
+      else :
+        return False
+
+     
       
       
 def main():
@@ -83,6 +100,13 @@ def main():
         print(f"given number {mobile_number} is valid")
       else:
          print("invalid mobile number")
+
+      #rule 1
+      passwd1 = input("entr password : ")
+      if chck_paswdrule1(passwd1):
+           print(f"pasword entered {passwd1} is valid")
+      else:
+           print("entered password is invalid,it must have 8 charcters")
 
 if __name__ == "__main__":
       main()
